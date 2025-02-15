@@ -3,8 +3,7 @@ package runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import net.masterthought.cucumber.ReportBuilder;
-import net.masterthought.cucumber.Configuration;
+
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.DataProvider;
@@ -25,22 +24,5 @@ public class TestRunner extends AbstractTestNGCucumberTests{
     public Object[][] scenarios()
     {
        return super.scenarios();
-    }
-
-    @AfterSuite
-    public void generateReport() {
-
-            File reportOutputDirectory = new File("target/detailed-cucumber-reports");
-            List<String> jsonFiles = new ArrayList<>();
-            jsonFiles.add("target/cucumber.json");
-
-            String projectName = "EcomTestAutomation";
-
-            Configuration configuration = new Configuration(reportOutputDirectory, projectName);
-            configuration.setBuildNumber("1");
-
-            ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);
-            reportBuilder.generateReports();
-
     }
 }

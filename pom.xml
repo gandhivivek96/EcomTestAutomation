@@ -45,12 +45,6 @@
       <artifactId>selenium-java</artifactId>
       <version>4.28.1</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
-    <dependency>
-      <groupId>net.masterthought</groupId>
-      <artifactId>cucumber-reporting</artifactId>
-      <version>5.8.4</version>
-    </dependency>
 
   </dependencies>
   <build>

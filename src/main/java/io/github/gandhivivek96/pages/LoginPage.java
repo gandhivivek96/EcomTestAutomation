@@ -16,7 +16,8 @@ public class LoginPage {
     //locators
     private By emailInputLocator = By.id("input-email");
     private By passwordInputLocator = By.id("input-password");
-    private By loginButtonLocator = By.xpath("//input[@value='Login']");
+    private By loginButtonLocator =  By.xpath("//input[@value='Login']");
+    //  By.cssSelector("input[value='Login']");
     private By logoutLocator = By.xpath("//a[@class='list-group-item' and normalize-space(text())='Logout']");
     private By errorMsgLocator = By.cssSelector("div.alert.alert-danger");
 
