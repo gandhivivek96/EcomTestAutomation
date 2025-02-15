@@ -8,6 +8,8 @@ import io.cucumber.java.en.When;
 import io.github.gandhivivek96.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 
 public class LoginPageStepDef {
 
@@ -17,7 +19,9 @@ public class LoginPageStepDef {
     @Before
     public void setUp()
     {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
     }
 
     @After
@@ -40,22 +44,36 @@ public class LoginPageStepDef {
     @Given("I have entered a valid email address and password")
     public void i_have_entered_a_valid_email_address_and_password() {
 
-        loginPage.enterEmail("test@test.com");
-        loginPage.enterPassword("123");
+        loginPage.enterEmail("qasdet@gmail.com");
+        loginPage.enterPassword("test123");
 
     }
+
+    @Given("I have entered invalid {string} and {string}")
+    public void i_have_entered_invalid_and(String email, String pwd) {
+        // Write code here that turns the phrase above into concrete actions
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(pwd);
+    }
+
     @When("I click on the login button")
     public void i_click_on_the_login_button() {
 
         loginPage.clickLogin();
 
     }
+
     @Then("I should be logged in successfully")
     public void i_should_be_logged_in_successfully() {
+
+        Assert.assertEquals(loginPage.checkLogoutLink(),true);
     }
 
+    @Then("I should see an error message containing {string}")
+    public void i_should_see_an_error_message_containing(String errormsg) {
+        // Write code here that turns the phrase above into concrete actions
 
-
-
+        Assert.assertEquals( loginPage.errorMessage(errormsg),true);
+    }
 
 }

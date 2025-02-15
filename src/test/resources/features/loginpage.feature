@@ -12,20 +12,15 @@ Feature: Login Functionality for OpenCart E-commerce Website
     When I click on the login button
     Then I should be logged in successfully
 
-#
-#  Scenario Outline: Unsuccessful login with invalid email or password
-#    Given I have entered invalid "<email>" and "<password>"
-#    When I click on the login button
-#    Then I should see an error message containing "<error_message>"
-#
-#    Examples:
-#      | email             | password         | error_message                                        |
-#      | invalid@email.com | invalidPassword  | Warning: No match for E-Mail Address and/or Password. |
-#      | abcccc            | validPassword    | Warning: No match for E-Mail Address and/or Password. |
-#      | valid@email.com   | abccc            | Warning: No match for E-Mail Address and/or Password. |
-#     # |                   |                  | Warning: No match for E-Mail Address and/or Password. | #Empty credentials
-#      #| valid@email.com   | password with spaces | Warning: No match for E-Mail Address and/or Password. | #Whitespace
-#
-#  Scenario: Navigating to the forgotten password page
-#    When I click on the "Forgotten Password" link
-#    Then I should be redirected to the password reset page #at "/index.php?route=account/forgotten" # Or the actual URL
+
+  Scenario Outline: Unsuccessful login with invalid email or password
+    Given I have entered invalid "<email>" and "<password>"
+    When I click on the login button
+    Then I should see an error message containing "<error_message>"
+
+    Examples:
+      | email            | password             | error_message                                         |
+      | qasdet@gail.com  | invalid1235          | Warning: No match for E-Mail Address and/or Password. |
+      | abcccc@test.com  | validPassword        | Warning: No match for E-Mail Address and/or Password. |
+      | validt@gmail.com | abc23cc              | Warning: No match for E-Mail Address and/or Password. |
+      | qadev@gmail.com  | password with spaces | Warning: No match for E-Mail Address and/or Password. |
